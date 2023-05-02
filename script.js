@@ -1,33 +1,22 @@
+function modulo(x,n){
+    return ((x%n)+n)%n;
+};
+
 function getComputerChoice() {
-    let randNum = Math.floor(Math.random()*3);
-    if (randNum==0){
-        return "rock"
-    } else if (randNum==1){
-        return "paper"
-    } else {
-        return "scissors"
-    }
+    return Math.floor(Math.random()*3);
 };
 
 function playRound(playerSelection, computerSelection) {
-    let playerSelectionLower = playerSelection.toLowerCase();
+    const playerSelectionLower = playerSelection.toLowerCase();
+    let playerSelectionNum;
+    if (playerSelectionLower=="rock") {playerSelectionNum = 0;}
+    else if (playerSelectionLower=="paper") {playerSelectionNum = 1;}
+    else if (playerSelectionLower=="scissors") {playerSelectionNum = 2;};
 
-    if (playerSelectionLower=="rock") {
-        if (computerSelection=="rock"){return "Draw"}
-        else if (computerSelection=="paper"){return "Lose"}
-        else if (computerSelection=="scissors"){return "Win"}
-    }
-    else if (playerSelectionLower=="paper") {
-        if (computerSelection=="rock"){return "Win"}
-        else if (computerSelection=="paper"){return "Draw"}
-        else if (computerSelection=="scissors"){return "Lose"}
-    }
-    else if (playerSelectionLower=="scissors") {
-        if (computerSelection=="rock"){return "Lose"}
-        else if (computerSelection=="paper"){return "Win"}
-        else if (computerSelection=="scissors"){return "Draw"}
-    }
-    else {return "Error, invalid choice.\n"}
+    const result = modulo(playerSelectionNum-computerSelection, 3);
+    if (result==0) {return 'Draw'}
+    else if (result==1) {return 'Win'}
+    else if (result==2) {return 'Lose'};
 };
 
 const btnList = document.querySelectorAll(".selector-panel>.btn")

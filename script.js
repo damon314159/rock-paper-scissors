@@ -11,6 +11,7 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     let playerSelectionLower = playerSelection.toLowerCase();
+
     if (playerSelectionLower=="rock") {
         if (computerSelection=="rock"){return "Draw"}
         else if (computerSelection=="paper"){return "Lose"}
@@ -29,14 +30,15 @@ function playRound(playerSelection, computerSelection) {
     else {return "Error, invalid choice.\n"}
 }
 
-function game(){
-    let winCount=0;
-    for (let i=0; i<5; i++) {
-        let result = playRound(prompt("\nPick your weapon!: "), getComputerChoice());
-        console.log(result);
-        if (result=="Win") {
-            winCount++;
-        }
-    }
-    console.log(`You won ${winCount} out of 5 games`);
-}
+const rockBtn = document.querySelector("#rock-btn");
+const paperBtn = document.querySelector("#paper-btn");
+const scisBtn = document.querySelector("#scis-btn");
+
+rockBtn.addEventListener('click', () => 
+playRound('rock',getComputerChoice()));
+
+paperBtn.addEventListener('click', () => 
+playRound('paper',getComputerChoice()));
+
+scisBtn.addEventListener('click', () => 
+playRound('scissors',getComputerChoice()));

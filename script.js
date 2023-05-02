@@ -7,7 +7,7 @@ function getComputerChoice() {
     } else {
         return "scissors"
     }
-}
+};
 
 function playRound(playerSelection, computerSelection) {
     let playerSelectionLower = playerSelection.toLowerCase();
@@ -28,17 +28,10 @@ function playRound(playerSelection, computerSelection) {
         else if (computerSelection=="scissors"){return "Draw"}
     }
     else {return "Error, invalid choice.\n"}
-}
+};
 
-const rockBtn = document.querySelector("#rock-btn");
-const paperBtn = document.querySelector("#paper-btn");
-const scisBtn = document.querySelector("#scis-btn");
-
-rockBtn.addEventListener('click', () => 
-playRound('rock',getComputerChoice()));
-
-paperBtn.addEventListener('click', () => 
-playRound('paper',getComputerChoice()));
-
-scisBtn.addEventListener('click', () => 
-playRound('scissors',getComputerChoice()));
+const btnList = document.querySelectorAll(".selector-panel>.btn")
+btnList.forEach( (btn)=> btn.addEventListener('click', (e)=> {
+    const choice = e.target.textContent.toLowerCase();
+    playRound(choice, getComputerChoice());
+}));

@@ -39,7 +39,7 @@ function displayGame(gameResult, playerSelection, computerSelection) {
     "You chose " + capitalize(playerSelection)
     + " and the Computer chose " + capitalize(computerSelection);
     const resultSpan = document.querySelector(".results-panel .round-result > span");
-    resultSpan.innerHTML = "This round was a " + gameResult + "!";
+    resultSpan.innerHTML = "This round was a " + gameResult;
 };
 
 function checkEndCondition() {
@@ -52,7 +52,7 @@ function checkEndCondition() {
     };
 };
 
-const btnList = document.querySelectorAll(".selector-panel>.btn")
+const btnList = document.querySelectorAll(".selector-panel .btn")
 btnList.forEach( (btn)=> btn.addEventListener('click', (e)=> {
     const playerSelection = e.target.textContent.toLowerCase();
     const computerSelection = getComputerChoice();
@@ -60,9 +60,7 @@ btnList.forEach( (btn)=> btn.addEventListener('click', (e)=> {
     displayGame(gameResult, playerSelection, computerSelection);
     if (checkEndCondition()==true) {
         const selectorPanel = document.querySelector('.selector-panel');
-        for (i=0; i<3; i++) {
-            selectorPanel.removeChild(selectorPanel.children[0]);
-        };
+        selectorPanel.removeChild(selectorPanel.children[0]);
         const endNode = document.createElement('h3');
         const endMessage = document.createTextNode("Thanks for playing! Good Game");
         endNode.appendChild(endMessage);

@@ -6,16 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
     <script src="script.js", defer></script>
-    <style src="style.css"></style>
+    <link rel="stylesheet" href="style.css"></link>
 </head>
 <body>
+    <br>
     <div class="title-card">
         <h1>Rock, Paper, Scissors!</h1>
     </div>
     <div class="selector-panel">
-        <button class="btn">Rock</button>
-        <button class="btn">Paper</button>
-        <button class="btn">Scissors</button>
+        <div>
+            <button class="btn">Rock</button>
+            <button class="btn">Paper</button>
+            <button class="btn">Scissors</button>
+        </div>
     </div>
     <div class="results-panel">
         <div>
@@ -28,7 +31,7 @@
             <br>
         </div>
         <div>The scores are as follows:</div>
-        <div>
+        <div class="counter-container">
             <div class="win-counter">Wins: <span>0</span></div>
             <div class="draw-counter">Draws: <span>0</span></div>
             <div class="loss-counter">Losses: <span>0</span></div>

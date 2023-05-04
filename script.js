@@ -42,7 +42,15 @@ function displayGame(gameResult, playerSelection, computerSelection) {
     resultSpan.innerHTML = "This round was a " + gameResult + "!";
 };
 
-
+function checkEndCondition() {
+    const winScore = document.querySelector(".win-counter > span").innerHTML
+    const lossScore = document.querySelector(".loss-counter > span").innerHTML
+    if (winScore >=5 || lossScore >=5) {
+        return true
+    } else {
+        return false
+    };
+};
 
 const btnList = document.querySelectorAll(".selector-panel>.btn")
 btnList.forEach( (btn)=> btn.addEventListener('click', (e)=> {
@@ -50,4 +58,14 @@ btnList.forEach( (btn)=> btn.addEventListener('click', (e)=> {
     const computerSelection = getComputerChoice();
     const gameResult = playRound(playerSelection, computerSelection);
     displayGame(gameResult, playerSelection, computerSelection);
+    if (checkEndCondition()==true) {
+        const selectorPanel = document.querySelector('.selector-panel');
+        for (i=0; i<3; i++) {
+            selectorPanel.removeChild(selectorPanel.children[0]);
+        };
+        const endNode = document.createElement('h3');
+        const endMessage = document.createTextNode("Thanks for playing! Good Game");
+        endNode.appendChild(endMessage);
+        selectorPanel.appendChild(endNode);
+    };
 }));
